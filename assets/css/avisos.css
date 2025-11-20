@@ -1,0 +1,42 @@
+.avisos-container {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 22px;
+        }
+
+        .aviso-card {
+            background: #ffffff;
+            padding: 22px 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-left: 6px solid #ff6600;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .aviso-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+        }
+
+        .aviso-titulo {
+            margin: 0;
+            font-size: 20px;
+            color: #ff6600;
+            font-weight: 600;
+        }
+
+        .aviso-descripcion {
+            color: #000 !important;
+            font-size: 15px;
+            margin: 8px 0;
+            line-height: 1.4;
+        }
+
+        .aviso-fecha {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 13px;
+            color: #777;
+            font-weight: 500;
+        }

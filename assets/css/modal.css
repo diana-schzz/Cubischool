@@ -1,0 +1,110 @@
+.modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+        }
+
+        .modal-box {
+            background: #ffffff;
+            width: 90%;
+            max-width: 520px;
+            border-radius: 20px;
+            padding: 35px 40px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+            animation: fadeIn .25s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-15px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 18px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 26px;
+            color: #ff6600;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .modal-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #ff6600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-form label {
+            display: block;
+            font-size: 15px;
+            margin-bottom: 6px;
+            color: black;
+            font-weight: 400;
+        }
+
+        .modal-form input,
+        .modal-form textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 18px;
+            font-family: "Poppins", sans-serif;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .modal-form textarea {
+            resize: none;
+            height: 110px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 5px;
+        }
+
+        .btn-cancel {
+            background: #60421F;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-save {
+            background: #ff6600;
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-save:hover {
+            background: #e45a00;
+        }
+
+        .modal-form input[readonly] {
+            background: #f3f3f3;
+            cursor: not-allowed;
+        }

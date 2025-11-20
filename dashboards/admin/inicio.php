@@ -20,7 +20,7 @@ $cubiculosDisponibles = $cubiculosSQL->fetch_assoc()['total'];
 $avisosActivosSQL = $mysqli->query("SELECT COUNT(*) AS total FROM avisos");
 $avisosActivos = $avisosActivosSQL->fetch_assoc()['total'];
 
-$avisosRecientesSQL = $mysqli->query("SELECT titulo, fecha FROM avisos ORDER BY fecha DESC LIMIT 5");
+$avisosRecientesSQL = $mysqli->query("SELECT titulo, descripcion, fecha FROM avisos ORDER BY fecha DESC LIMIT 5");
 
 ?>
 
@@ -32,6 +32,7 @@ $avisosRecientesSQL = $mysqli->query("SELECT titulo, fecha FROM avisos ORDER BY 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/cubi/assets/css/avisos.css">
     <title>CUBISCHOOL - Panel</title>
     <style>
         * {
@@ -42,7 +43,7 @@ $avisosRecientesSQL = $mysqli->query("SELECT titulo, fecha FROM avisos ORDER BY 
 
         body {
             display: flex;
-            height: 100vh;
+            min-height: 100vh;
             background-color: #f7f7f7;
             font-family: "Poppins", sans-serif;
         }
@@ -175,21 +176,24 @@ $avisosRecientesSQL = $mysqli->query("SELECT titulo, fecha FROM avisos ORDER BY 
         </div>
 
 
-        <h2 style="margin-top:40px; color:#ff6600;">Avisos recientes</h2>
-        <div class="avisos-recientes">
+        <h2 style="margin-top:40px; color:black; font-size:28px;">Avisos recientes</h2>
+        <div class="avisos-container">
             <?php 
             if ($avisosRecientesSQL->num_rows > 0) {
                 while ($row = $avisosRecientesSQL->fetch_assoc()) {
                     $titulo = htmlspecialchars($row['titulo']);
+                    $descripcion = htmlspecialchars($row['descripcion']);
                     $fecha = date("d M Y", strtotime($row['fecha']));
+
                     echo "
-                    <div class='aviso-item'>
-                        <strong>$titulo</strong>
-                        <span style='color:#ff6600; font-weight:600;'>$fecha</span>
+                    <div class='aviso-card'>
+                        <h3 class='aviso-titulo'>$titulo</h3>
+                        <p class='aviso-descripcion'>$descripcion</p>
+                        <span class='aviso-fecha'>$fecha</span>
                     </div>";
                 }
             } else {
-                echo "<p>No hay avisos disponibles.</p>";
+                echo "<p style='color:#444;'>No hay avisos disponibles.</p>";
             }
             ?>
         </div>

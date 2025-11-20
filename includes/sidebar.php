@@ -35,7 +35,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     }
 
     .menu a:hover {
-            background-color: rgba(255, 255, 255, 0.15);
+        background-color: rgba(255, 255, 255, 0.15);
     }
 
     .menu i {
@@ -119,8 +119,12 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         color: white;
         flex-direction: column;
         align-items: center;
-        height: 100vh;
+        /* que crezca con el contenido */
+        height: auto;
+        min-height: 100vh;
         padding-top: 30px;
+        top: 0;
+        position: sticky;
     }
 
     .sidebar:hover {
@@ -170,9 +174,17 @@ function toggleSidebar() {
 }
 </script>
 
-<body>
     <div class="sidebar">
-        <h2 onclick="window.location.href='inicio.php'" style="cursor:pointer;">CUBISCHOOL</h2>
+    <h2 onclick="window.location.href=
+            '<?php 
+                if ($tipo == 1) echo "/cubi/dashboards/alumno/inicio.php";
+                elseif ($tipo == 2) echo "/cubi/dashboards/secretaria/inicio.php";
+                elseif ($tipo == 3) echo "/cubi/dashboards/admin/inicio.php";
+            ?>'"
+        style="cursor:pointer;">
+        CUBISCHOOL
+    </h2>
+
     <ul class="menu">
          <?php if ($tipo == 1): ?>
             <li>
@@ -187,15 +199,7 @@ function toggleSidebar() {
                 <a href="mis_reservas.php"
                 class="<?= ($currentPage === 'mis_reservas.php' ? 'active' : '') ?>">
                     <i class="fa-solid fa-book-bookmark"></i>
-                    <span>Mis Reservas</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="avisos.php"
-                class="<?= ($currentPage === 'avisos.php' ? 'active' : '') ?>">
-                    <i class="fa-solid fa-bell"></i>
-                    <span>Avisos</span>
+                    <span>Historial</span>
                 </a>
             </li>
 
@@ -203,13 +207,12 @@ function toggleSidebar() {
                 <a href="perfil.php"
                 class="<?= ($currentPage === 'perfil.php' ? 'active' : '') ?>">
                     <i class="fa-solid fa-user"></i>
-                    <span>Mi Perfil</span>
+                    <span>Perfil</span>
                 </a>
             </li>
 
             <li>
-                <a href="contacto.php"
-                class="<?= ($currentPage === 'contacto.php' ? 'active' : '') ?>">
+                <a href="#" id="openModalSidebar">
                     <i class="fa-solid fa-circle-question"></i>
                     <span>Contáctanos</span>
                 </a>
@@ -248,11 +251,9 @@ function toggleSidebar() {
 
 
     <div class="logout">
-        <a href="/cubi/auth/logout.php"><i class="fa-solid fa-right-from-bracket"></i><span>Cerrar sesión</span></a>
+        <a href="/cubi/auth/logout.php"><i class="fa-solid fa-right-from-bracket"></i><span>Salir</span></a>
     </div>
 
 
 </div>
-</body>
-</html>
 
